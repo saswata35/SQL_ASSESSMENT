@@ -1,0 +1,170 @@
+1.Create a Database & Table Using MySQL Command-Line Client. ? Create a database with the name StudentManagementSystem.
+Code:-
+CREATE DATABASE StudentManagementSystem;
+USE StudentManagementSystem;
+Output:-
+Query OK, 1 row affected (0.05 sec)
+Database changed
+2. Create a table with named Student with attributes: -
+? StudentID (Primary Key) 
+? FirstName 
+? LastName 
+? DateOfBirth
+? Gender 
+? Email 
+? Phone
+Code:-
+CREATE TABLE Student (
+    -> StudentID VARCHAR(10) PRIMARY KEY,
+    -> FirstName VARCHAR(15) NOT NULL,
+    -> LastName VARCHAR(20) NOT NULL,
+    -> DateOfBirth DateTime NOT NULL,
+    -> Gender VARCHAR(15) NOT NULL,
+    -> Email VARCHAR(25) UNIQUE NOT NULL,
+    -> Phone VARCHAR(20) NOT NULL
+    -> );
+show tables;
+Output:-
+Query OK, 0 rows affected (0.06 sec)
++-----------------------------------+
+| Tables_in_studentmanagementsystem |
++-----------------------------------+
+| student                           |
++-----------------------------------+
+1 row in set (0.00 sec)
+3. Create a table with name Course with attributes:
+? CourseID (Primary Key) 
+? CourseTitle 
+? Credits
+Code:-
+CREATE TABLE Course(
+    -> CourseID VARCHAR(15) PRIMARY KEY,
+    -> CourseTitle VARCHAR(25) NOT NULL,
+    -> Credits INT NOT NULL
+    -> );
+show tables;
+Output:-
+Query OK, 0 rows affected (0.06 sec)
++-----------------------------------+
+| Tables_in_studentmanagementsystem |
++-----------------------------------+
+| course                            |
+| student                           |
++-----------------------------------+
+2 rows in set (0.00 sec)
+
+4.Create a table with named Instructor with attributes: 
+? InstructorID (Primary Key) 
+? FirstName 
+? LastName 
+? Email
+Code:-
+CREATE TABLE Instructor(
+    -> InstructorID VARCHAR(15) PRIMARY KEY,
+    -> Email VARCHAR(25) UNIQUE NOT NULL,
+    -> FirstName VARCHAR(30) NOT NULL,
+    -> LastName VARCHAR(20)
+    ->
+   -> );
+show tables;
+Output:-
+Query OK, 0 rows affected (0.06 sec).
++-----------------------------------+
+| Tables_in_studentmanagementsystem |
++-----------------------------------+
+| course                            |
+| instructor                        |
+| student                           |
++-----------------------------------+
+3 rows in set (0.00 sec)
+
+
+5.Create a table with named Enrollment with attributes: 
+? EnrollmentID (Primary Key) 
+? EnrollmentDate
+? StudentID(Foreign key)
+? CourseID(Foreign Key) 
+? InstructorID(Foreign key)
+Code:-
+CREATE TABLE Enrollment(
+    -> EnrollmentID VARCHAR(10) PRIMARY KEY,
+    -> StudentID VARCHAR(15) NOT NULL,
+    -> CourseID VARCHAR(20) NOT NULL,
+    -> InstructorID VARCHAR(15) NOT NULL,
+    -> FOREIGN KEY(StudentID) REFERENCES Student(StudentID),
+    -> FOREIGN KEY(CourseID) REFERENCES Course(CourseID),
+    -> FOREIGN KEY(InstructorID) REFERENCES Instructor(InstructorID)
+    -> );
+show tables;
+Output:-
+Query OK, 0 rows affected (0.06 sec)
++-----------------------------------+
+| Tables_in_studentmanagementsystem |
++-----------------------------------+
+| course                            |
+| enrollment                        |
+| instructor                        |
+| student                           |
++-----------------------------------+
+4 rows in set (0.00 sec)
+
+6.Create a table with named Score with attributes: 
+? ScoreID (Primary Key) 
+? CourseID (Foreign key) 
+? StudentID (Foreign Key) 
+? DateOfExam 
+? CreditObtained
+Code:-
+CREATE TABLE Score(
+    -> ScoreID VARCHAR(15) PRIMARY KEY,
+    -> StudentID VARCHAR(15) NOT NULL,
+    -> CourseID VARCHAR(20) NOT NULL,
+    -> FOREIGN KEY(StudentID) REFERENCES Student(StudentID),
+    -> FOREIGN KEY(CourseID) REFERENCES Course(CourseID),
+    -> CreditObtained VARCHAR(10) NOT NULL,
+    -> DateOfExam DateTime NOT NULL
+    -> );
+show tables;
+Output:-
+Query OK, 0 rows affected (0.05 sec)
++-----------------------------------+
+| Tables_in_studentmanagementsystem |
++-----------------------------------+
+| course                            |
+| enrollment                        |
+| instructor                        |
+| score                             |
+| student                           |
++-----------------------------------+
+5 rows in set (0.00 sec)
+
+7.Create a table with named Feedback with attributes: 
+? FeedbackID (Primary Key) 
+? StudentID (Foreign key) 
+? Date 
+? InstructorName 
+? Feedback 
+Code:-
+CREATE TABLE Feedback(
+    -> FeedbackID INT Auto_Increment PRIMARY KEY,
+    -> StudentID VARCHAR(15) NOT NULL,
+    -> InstructorName VARCHAR(10) NOT NULL,
+    -> Feedback VARCHAR(120) NOT NULL
+    -> );
+show tables;
+Output:-
+Query OK, 0 rows affected (0.03 sec)
++-----------------------------------+
+| Tables_in_studentmanagementsystem |
++-----------------------------------+
+| course                            |
+| enrollment                        |
+| feedback                          |
+| instructor                        |
+| score                             |
+| student                           |
++-----------------------------------+
+6 rows in set (0.00 sec)
+
+
+
