@@ -1,0 +1,18 @@
+Assignment 2:-
+Task:-
+//Create a SELECT query that will show the records from the student database and order them by LastName.
+Code:-
+SELECT StudentID,FirstName,LastName,DateOfBirth,Email FROM Student ORDER BY LastName;
+Implementation:-
+This query retrieves all records from the student database and orders them based on the LastName column.
+Output:-
++-----------+-----------+----------+---------------------+------------------------+
+| StudentID | FirstName | LastName | DateOfBirth         | Email                  |
++-----------+-----------+----------+---------------------+------------------------+
+| S101      | Saswata   | Banerjee | 2001-12-20 00:00:00 | sasban@gmail.com       |
+| S103      | Arka      | Dutta    | 2013-08-08 00:00:00 | arkadutta@gmail.com    |
+| S102      | Navanil   | Ghosh    | 2000-10-10 00:00:00 | navanilghosh@gmail.com |
+| S104      | Avijit    | Ghosh    | 2011-09-08 00:00:00 | avijitghosh@gmail.com  |
+| S105      | Manas     | Manna    | 2011-06-05 00:00:00 | manasmanna@gamil.com   |
++-----------+-----------+----------+---------------------+------------------------+
+5 rows in set (0.00 sec)

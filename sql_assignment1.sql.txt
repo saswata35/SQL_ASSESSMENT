@@ -1,0 +1,26 @@
+Assignment 1:-
+Task:-
+//Create a query to retrieve StudentID, FirstName, DateOfBirth, Email and
+CourseID from the CoursesEnrolled by a student using the subquery in the
+SELECT clause. In which clause provide a StudentID as ‘S102’.. Ensure that the
+subquery returns one row only. That means in the Enrollment table there should
+be one entry for the ‘S102;.
+(Hints: The syntax of the query will be:
+SELECT StudentID,
+FirstName,
+DateOfBirth,
+Email,
+( Subquery in the enrollment table for StudentID = 'S102') '
+FROM Student
+WHERE StudentID= 'S102';)
+Code:-
+SELECT StudentID,FirstName,DateOfBirth,Email,(SELECT CourseID FROM Enrollment WHERE StudentID='S102' LIMIT 1) AS CourseID FROM Student WHERE StudentID='S102';
+Implementation:-
+This query retrieves information about a student and their enrolled courses based on the provided StudentID 'S102'.
+Output:-
++-----------+-----------+---------------------+------------------------+----------+
+| StudentID | FirstName | DateOfBirth         | Email                  | CourseID |
++-----------+-----------+---------------------+------------------------+----------+
+| S102      | Navanil   | 2000-10-10 00:00:00 | navanilghosh@gmail.com | C101     |
++-----------+-----------+---------------------+------------------------+----------+
+1 row in set (0.02 sec)
